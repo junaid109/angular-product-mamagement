@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { IProduct } from './products';
+import { ProductService } from './product.service';
 
 @Component({
     selector: 'pm-products',
@@ -23,32 +24,10 @@ export class ProductListComponent implements OnInit {
     }
 
     filteredProducts: IProduct[];
-    products: IProduct[] = [
-        {
-            "productId": 2,
-            "productName": "Garden Cart",
-            "productCode": "GDN-0023",
-            "releaseDate": "March 18, 2016",
-            "description": "15 gallon capacity rolling garden cart",
-            "price": 32.99,
-            "starRating": 4.2,
-            "imageUrl": "http://openclipart.org/image/300px/svg_to_png/58471/garden_cart.png"
-        },
-        {
-            "productId": 5,
-            "productName": "Hammer",
-            "productCode": "TBX-0048",
-            "releaseDate": "May 21, 2016",
-            "description": "Curved claw steel hammer",
-            "price": 8.9,
-            "starRating": 4.8,
-            "imageUrl": "http://openclipart.org/image/300px/svg_to_png/73/rejon_Hammer.png"
-        }
-    ];
+    products: IProduct[] = [  ];
 
-    constructor(){
-      this.filteredProducts = this.products;
-      this.listFilter ='cart';
+    constructor(private _productService: ProductService){
+
     }
 
     performFilter(filterBy: string): IProduct[] {
@@ -61,9 +40,8 @@ export class ProductListComponent implements OnInit {
         this.showImage = !this.showImage;
     }
 
-    ngOnInit() {
-      //Called after the constructor, initializing input properties, and the first call to ngOnChanges.
-      //Add 'implements OnInit' to the class.
-      console.log("on init");
+    ngOnInit(): void {
+      this.products = this._productService.getProducts();
+      this.filteredProducts = this.products;      
     }
 }
