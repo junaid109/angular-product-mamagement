@@ -5,7 +5,7 @@ import { ProductService } from './product.service';
 @Component({
     selector: 'pm-products',
     templateUrl: './product-list.component.html',
-    styleUrls:['./product-list.component.css']
+    styleUrls: ['./product-list.component.css']
 })
 export class ProductListComponent implements OnInit {
     pageTitle: string = 'Product List';
@@ -19,15 +19,18 @@ export class ProductListComponent implements OnInit {
     }
     set listFilter(value: string) {
       this._listFilter = value;
-      this.filteredProducts=this.listFilter ? this.performFilter(this.listFilter) : this.products;
+      this.filteredProducts = this.listFilter ? this.performFilter(this.listFilter) : this.products;
 
     }
 
     filteredProducts: IProduct[];
-    products: IProduct[] = [  ];
 
-    constructor(private _productService: ProductService){
+    products: IProduct[] = [
 
+    ];
+
+    constructor(private _productService: ProductService) {
+      this.filteredProducts = this.products;
     }
 
     performFilter(filterBy: string): IProduct[] {
@@ -42,6 +45,7 @@ export class ProductListComponent implements OnInit {
 
     ngOnInit(): void {
       this.products = this._productService.getProducts();
-      this.filteredProducts = this.products;      
+      this.filteredProducts = this.products;
     }
+
 }
