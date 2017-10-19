@@ -45,12 +45,8 @@
                         <td>{{ product.productCode | lowercase | convertToSpaces }}</td>
                         <td>{{ product.releaseDate }}</td>
                         <td>{{ product.price | currency:'GBP':true:'1.2-2'}}</td>
-<<<<<<< HEAD
-                        <td><pm-star></pm-star></td>
-=======
                         <td><pm-star [rating]='product.starRating' (ratingClicked)='onRatingClicked($event)'>
                           </pm-star></td>
->>>>>>> 6bbd77d30f226f3790758950eb9b413e87f2a797
                     </tr>
                 </tbody>
             </table>
