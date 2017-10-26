@@ -1,5 +1,4 @@
 import { NgModule } from '@angular/core';
-import { StarComponent } from '../../shared/star.component';
 import { ConvertToSpacesPipe } from '../../shared/convert-to-spaces.pipe';
 import { ProductDetailComponent } from '../product-detail/product-detail.component';
 import { ProductListComponent } from '../product-list.component';
@@ -21,7 +20,6 @@ import { ProductService } from '../product.service';
     ProductListComponent,
     ProductDetailComponent,
     ConvertToSpacesPipe,
-    StarComponent
   ],
   providers: [
     ProductService,
